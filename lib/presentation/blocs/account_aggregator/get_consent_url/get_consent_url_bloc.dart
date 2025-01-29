@@ -2,9 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pfm_ekyc/core/common/app_error.dart';
-import 'package:pfm_ekyc/data/models/authentication/setu_consent_url_model.dart';
+import 'package:pfm_ekyc/data/models/account_aggregator/setu_consent_url_model.dart';
 import 'package:pfm_ekyc/domain/entities/no_params.dart';
-import 'package:pfm_ekyc/domain/usecases/authentication/get_consent_link.dart';
+import 'package:pfm_ekyc/domain/usecases/account_aggregator/get_consent_link.dart';
 
 part 'get_consent_url_event.dart';
 part 'get_consent_url_state.dart';

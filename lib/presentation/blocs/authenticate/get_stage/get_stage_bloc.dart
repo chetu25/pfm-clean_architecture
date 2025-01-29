@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pfm_ekyc/core/common/app_error.dart';
-import 'package:pfm_ekyc/data/models/stage_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/stage_model.dart';
 import 'package:pfm_ekyc/domain/entities/no_params.dart';
 import 'package:pfm_ekyc/domain/usecases/authentication/check_stages.dart';
 

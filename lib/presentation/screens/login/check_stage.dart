@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pfm_ekyc/data/models/stage_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/stage_model.dart';
 import 'package:pfm_ekyc/routes/route.dart';
 
 class CheckStage {

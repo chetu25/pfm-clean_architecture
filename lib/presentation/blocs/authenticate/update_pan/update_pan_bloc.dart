@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pfm_ekyc/core/common/app_error.dart';
-import 'package:pfm_ekyc/data/models/update_pan_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/update_pan_model.dart';
 import 'package:pfm_ekyc/domain/entities/validate_pan_params.dart';
 import 'package:pfm_ekyc/domain/usecases/authentication/submit_pan.dart';
 

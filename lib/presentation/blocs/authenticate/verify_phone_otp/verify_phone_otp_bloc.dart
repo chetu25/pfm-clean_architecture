@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pfm_ekyc/core/common/app_error.dart';
 import 'package:pfm_ekyc/data/data_sources/local/token_local_data_source.dart';
-import 'package:pfm_ekyc/data/models/phone_otp_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/phone_otp_model.dart';
 import 'package:pfm_ekyc/domain/entities/phone_otp_params.dart';
 import 'package:pfm_ekyc/domain/usecases/authentication/validate_phone_otp.dart';
 

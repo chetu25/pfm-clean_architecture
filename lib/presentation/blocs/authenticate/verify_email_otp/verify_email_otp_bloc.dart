@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pfm_ekyc/core/common/app_error.dart';
-import 'package:pfm_ekyc/data/models/verify_email_otp_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/verify_email_otp_model.dart';
 import 'package:pfm_ekyc/domain/entities/verify_email_otp_params.dart';
 import 'package:pfm_ekyc/domain/usecases/authentication/vallidate_email_otp.dart';
 

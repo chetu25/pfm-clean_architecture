@@ -2,14 +2,13 @@ import 'package:injectable/injectable.dart';
 import 'package:pfm_ekyc/api/api_client.dart';
 import 'package:pfm_ekyc/api/api_constants.dart';
 import 'package:pfm_ekyc/data/models/authentication/profile_model.dart';
-import 'package:pfm_ekyc/data/models/authentication/setu_consent_url_model.dart';
-import 'package:pfm_ekyc/data/models/get_email_otp_model.dart';
-import 'package:pfm_ekyc/data/models/phone_login_model.dart';
-import 'package:pfm_ekyc/data/models/phone_otp_model.dart';
-import 'package:pfm_ekyc/data/models/stage_model.dart';
-import 'package:pfm_ekyc/data/models/update_pan_model.dart';
-import 'package:pfm_ekyc/data/models/validate_pan_model.dart';
-import 'package:pfm_ekyc/data/models/verify_email_otp_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/get_email_otp_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/phone_login_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/phone_otp_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/stage_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/update_pan_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/validate_pan_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/verify_email_otp_model.dart';
 
 abstract class AccountRemoteDataSource {
   Future<PhoneLoginModel> getPhoneOtp(Map<String, dynamic> params);
@@ -27,8 +26,6 @@ abstract class AccountRemoteDataSource {
   Future<StageModel> getStage();
 
   Future<ProfileModel> fetchProfile();
-
-  Future<SetuConsentUrlModel> fetchConsentUrl();
 }
 
 @LazySingleton(as: AccountRemoteDataSource)
@@ -88,11 +85,5 @@ class AccountRemoteDataSourceImpl implements AccountRemoteDataSource {
   Future<ProfileModel> fetchProfile() async {
     final response = await _client.post(ApiConstants.profileUrl);
     return ProfileModel.fromJson(response);
-  }
-
-  @override
-  Future<SetuConsentUrlModel> fetchConsentUrl() async {
-    final response = await _client.get(ApiConstants.getConsentUrl);
-    return SetuConsentUrlModel.fromJson(response);
   }
 }

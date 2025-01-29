@@ -19,15 +19,20 @@ import '../api/injection_module.dart' as _i24;
 import '../api/token_services.dart' as _i884;
 import '../data/data_sources/local/theme_local_data_source.dart' as _i187;
 import '../data/data_sources/local/token_local_data_source.dart' as _i1017;
+import '../data/data_sources/remote/account_aggregator_remote_data_source.dart'
+    as _i461;
 import '../data/data_sources/remote/account_remote_data_source.dart' as _i459;
+import '../data/repositories/account_aggregator_repositories_impl.dart'
+    as _i474;
 import '../data/repositories/account_repositories_impl.dart' as _i529;
 import '../data/repositories/theme_repositories_impl.dart' as _i535;
 import '../data/repositories/token_repository_impl.dart' as _i393;
+import '../domain/repositories/account_aggregator_repositories.dart' as _i526;
 import '../domain/repositories/account_repositories.dart' as _i239;
 import '../domain/repositories/theme_repositories.dart' as _i490;
 import '../domain/repositories/tokens_repositories.dart' as _i629;
+import '../domain/usecases/account_aggregator/get_consent_link.dart' as _i1049;
 import '../domain/usecases/authentication/check_stages.dart' as _i674;
-import '../domain/usecases/authentication/get_consent_link.dart' as _i447;
 import '../domain/usecases/authentication/get_phone_otp.dart' as _i511;
 import '../domain/usecases/authentication/get_profile_data.dart' as _i661;
 import '../domain/usecases/authentication/send_email_otp.dart' as _i330;
@@ -35,8 +40,8 @@ import '../domain/usecases/authentication/submit_pan.dart' as _i839;
 import '../domain/usecases/authentication/validate_pan_number.dart' as _i413;
 import '../domain/usecases/authentication/validate_phone_otp.dart' as _i694;
 import '../domain/usecases/authentication/vallidate_email_otp.dart' as _i724;
-import '../presentation/blocs/authenticate/get_consent_url/get_consent_url_bloc.dart'
-    as _i883;
+import '../presentation/blocs/account_aggregator/get_consent_url/get_consent_url_bloc.dart'
+    as _i894;
 import '../presentation/blocs/authenticate/get_email_otp/get_email_otp_bloc.dart'
     as _i112;
 import '../presentation/blocs/authenticate/get_phone_otp/getphoneotp_bloc.dart'
@@ -95,16 +100,21 @@ _i174.GetIt $initGetIt(
       ));
   gh.lazySingleton<_i459.AccountRemoteDataSource>(
       () => _i459.AccountRemoteDataSourceImpl(gh<_i277.ApiClient>()));
+  gh.lazySingleton<_i461.AccountAggregatorRemoteDataSource>(
+      () => _i461.AccountAggregatorRemoteDataSourceImpl(gh<_i277.ApiClient>()));
   gh.lazySingleton<_i239.AccountRepositories>(
       () => _i529.AccountRepositoriesImpl(gh<_i459.AccountRemoteDataSource>()));
+  gh.lazySingleton<_i526.AccountAggregatorRepositories>(() =>
+      _i474.AccountAggregatorRepositoriesImpl(
+          gh<_i461.AccountAggregatorRemoteDataSource>()));
+  gh.factory<_i1049.GetConsentLink>(
+      () => _i1049.GetConsentLink(gh<_i526.AccountAggregatorRepositories>()));
   gh.factory<_i511.GetPhoneOtp>(
       () => _i511.GetPhoneOtp(gh<_i239.AccountRepositories>()));
   gh.factory<_i839.SubmitPan>(
       () => _i839.SubmitPan(gh<_i239.AccountRepositories>()));
   gh.factory<_i694.ValidatePhoneOtp>(
       () => _i694.ValidatePhoneOtp(gh<_i239.AccountRepositories>()));
-  gh.factory<_i447.GetConsentLink>(
-      () => _i447.GetConsentLink(gh<_i239.AccountRepositories>()));
   gh.factory<_i674.CheckStages>(
       () => _i674.CheckStages(gh<_i239.AccountRepositories>()));
   gh.factory<_i413.ValidatePanNumber>(
@@ -123,8 +133,8 @@ _i174.GetIt $initGetIt(
       () => _i610.GetStageBloc(gh<_i674.CheckStages>()));
   gh.factory<_i464.ValidatePanBloc>(
       () => _i464.ValidatePanBloc(gh<_i413.ValidatePanNumber>()));
-  gh.factory<_i883.GetConsentUrlBloc>(
-      () => _i883.GetConsentUrlBloc(gh<_i447.GetConsentLink>()));
+  gh.factory<_i894.GetConsentUrlBloc>(
+      () => _i894.GetConsentUrlBloc(gh<_i1049.GetConsentLink>()));
   gh.factory<_i255.VerifyPhoneOtpBloc>(() => _i255.VerifyPhoneOtpBloc(
         gh<_i694.ValidatePhoneOtp>(),
         gh<_i1017.TokenLocalDataSource>(),

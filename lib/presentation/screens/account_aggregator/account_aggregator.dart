@@ -8,10 +8,10 @@ import 'package:pfm_ekyc/core/custom/custom_appbar.dart';
 import 'package:pfm_ekyc/core/custom/custom_button.dart';
 import 'package:pfm_ekyc/core/custom/custom_rich_text.dart';
 import 'package:pfm_ekyc/gen/assets.gen.dart';
-import 'package:pfm_ekyc/presentation/blocs/authenticate/get_consent_url/get_consent_url_bloc.dart';
+import 'package:pfm_ekyc/presentation/blocs/account_aggregator/get_consent_url/get_consent_url_bloc.dart';
 import 'package:pfm_ekyc/presentation/blocs/authenticate/get_profile/get_profile_bloc.dart';
 import 'package:pfm_ekyc/presentation/screens/app_error_widget.dart';
-import 'package:pfm_ekyc/presentation/screens/login/aggregator_slider.dart';
+import 'package:pfm_ekyc/presentation/screens/account_aggregator/aggregator_slider.dart';
 
 class AccountAggregator extends StatefulWidget {
   const AccountAggregator({super.key});

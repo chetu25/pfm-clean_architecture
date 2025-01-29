@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pfm_ekyc/core/common/app_error.dart';
-import 'package:pfm_ekyc/data/models/phone_login_model.dart';
+import 'package:pfm_ekyc/data/models/authentication/phone_login_model.dart';
 import 'package:pfm_ekyc/domain/entities/phone_login_param.dart';
 import 'package:pfm_ekyc/domain/usecases/authentication/get_phone_otp.dart';
 
