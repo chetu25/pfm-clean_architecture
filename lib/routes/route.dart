@@ -5,6 +5,7 @@ class Routes {
   static const String emailLogin = '/emaillogin';
   static const String panVerification = '/panverification';
   static const String accountAggregator = '/accountaggregator';
+  static const String setuWeb = '/setuWeb';
 
   static const String logout = '/logout';
 }

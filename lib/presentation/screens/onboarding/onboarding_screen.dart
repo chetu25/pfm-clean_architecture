@@ -20,23 +20,6 @@ class OnboardingScreen extends StatefulWidget {
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
   bool exit = false;
-  bool isLoading = true;
-  @override
-  void initState() {
-    super.initState();
-    Timer(const Duration(seconds: 3), _gotolandingscreen1);
-  }
-
-  void _gotolandingscreen1() {
-    if (mounted) {
-      setState(() => isLoading = false);
-      Future.delayed(const Duration(milliseconds: 500), () {
-        if (mounted) {
-          context.go(Routes.onboarding);
-        }
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

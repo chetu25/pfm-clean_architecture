@@ -11,6 +11,7 @@ import 'package:pfm_ekyc/presentation/blocs/authenticate/validate_pan/validate_p
 import 'package:pfm_ekyc/presentation/blocs/authenticate/verify_email_otp/verify_email_otp_bloc.dart';
 import 'package:pfm_ekyc/presentation/blocs/authenticate/verify_phone_otp/verify_phone_otp_bloc.dart';
 import 'package:pfm_ekyc/presentation/screens/account_aggregator/account_aggregator.dart';
+import 'package:pfm_ekyc/presentation/screens/account_aggregator/setu_web.dart';
 import 'package:pfm_ekyc/presentation/screens/login/login_with_email_screen.dart';
 import 'package:pfm_ekyc/presentation/screens/login/login_with_phone_screen.dart';
 import 'package:pfm_ekyc/presentation/screens/login/verify_pan_screen.dart';
@@ -82,20 +83,23 @@ class RouteGenerator {
       GoRoute(
         path: Routes.accountAggregator,
         builder: (context, state) {
-          return MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (context) =>
-                    getIt<GetProfileBloc>()..add(FetchProfileEvent()),
-              ),
-              BlocProvider(
-                create: (context) => getIt<GetConsentUrlBloc>(),
-              ),
-            ],
+          return BlocProvider(
+            create: (context) =>
+                getIt<GetProfileBloc>()..add(FetchProfileEvent()),
             child: const AccountAggregator(),
           );
         },
       ),
+      GoRoute(
+        path: Routes.setuWeb,
+        builder: (context, state) {
+          return BlocProvider(
+            create: (context) =>
+                getIt<GetConsentUrlBloc>()..add(GetConsentLinkEvent()),
+            child: const SetuWeb(),
+          );
+        },
+      )
     ],
   );
 }

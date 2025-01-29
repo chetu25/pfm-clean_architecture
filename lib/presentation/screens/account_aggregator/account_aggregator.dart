@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:go_router/go_router.dart';
 import 'package:pfm_ekyc/core/ColorPallete/colors.dart';
 import 'package:pfm_ekyc/core/Extensions/size_extension.dart';
 import 'package:pfm_ekyc/core/common/custom_text_style.dart';
@@ -12,6 +13,7 @@ import 'package:pfm_ekyc/presentation/blocs/account_aggregator/get_consent_url/g
 import 'package:pfm_ekyc/presentation/blocs/authenticate/get_profile/get_profile_bloc.dart';
 import 'package:pfm_ekyc/presentation/screens/app_error_widget.dart';
 import 'package:pfm_ekyc/presentation/screens/account_aggregator/aggregator_slider.dart';
+import 'package:pfm_ekyc/routes/route.dart';
 
 class AccountAggregator extends StatefulWidget {
   const AccountAggregator({super.key});
@@ -174,18 +176,13 @@ class _AccountAggregatorState extends State<AccountAggregator> {
                   return CustomButton(
                     ontap: () {
                       FocusScope.of(context).unfocus();
-                      context
-                          .read<GetConsentUrlBloc>()
-                          .add(GetConsentLinkEvent());
+                      context.push(Routes.setuWeb);
                     },
-                    child: state is GetConsentUrlLoading
-                        ? Center(
-                            child: const CircularProgressIndicator.adaptive())
-                        : Text(
-                            'Continue',
-                            style: baseTextStyle14500.copyWith(
-                                color: AppColors.background),
-                          ),
+                    child: Text(
+                      'Continue',
+                      style: baseTextStyle14500.copyWith(
+                          color: AppColors.background),
+                    ),
                   );
                 },
               )),
