@@ -24,7 +24,8 @@ class ApiCallWithError {
         AppError(AppErrorType.api,
             error: e.errorMessage, statusCode: e.errorCode),
       );
-    } on Exception catch (_) {
+    } on Exception catch (e) {
+      print('--------------------- ${e.toString()}');
       return const Left(
         AppError(AppErrorType.api),
       );

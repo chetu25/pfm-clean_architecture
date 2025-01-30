@@ -33,8 +33,8 @@ class PFMekyc extends StatelessWidget {
               return Container(child: child);
             },
             routerConfig: RouteGenerator.router,
-            theme: lightTheme(),
-            darkTheme: ThemeData.dark(),
+            theme: AppTheme.lightTheme(context),
+            darkTheme: AppTheme.darkTheme(context),
             themeMode:
                 state is DarkThemeState ? ThemeMode.dark : ThemeMode.light,
           );

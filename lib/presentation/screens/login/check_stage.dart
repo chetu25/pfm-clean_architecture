@@ -10,10 +10,13 @@ class CheckStage {
     } else if (stageModel.data!.panNumber == false ||
         stageModel.data!.dob == false) {
       context.push(Routes.panVerification);
-    } else if (!stageModel.data!.aaConsentStatus!
-            .toLowerCase()
-            .contains('COMPLETED') &&
-        !stageModel.data!.aaConsentStatus!.toLowerCase().contains('ACTIVE')) {
+    } else if (stageModel.data?.aaConsentStatus == null ||
+        !stageModel.data!.aaConsentStatus!
+                .toLowerCase()
+                .contains('COMPLETED') &&
+            !stageModel.data!.aaConsentStatus!
+                .toLowerCase()
+                .contains('ACTIVE')) {
       context.push(Routes.accountAggregator);
     } else if (stageModel.data!.aaConsentStatus!
             .toLowerCase()

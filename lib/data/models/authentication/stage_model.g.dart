@@ -26,15 +26,20 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       panNumber: json['pan_number'] as bool?,
       dob: json['dob'] as bool?,
       aaConsentStatus: json['aa_consent_status'] as String?,
-      aaConsentDatetime: json['aa_consent_datetime'] == null
+      aaConsentDatetime: json['aa_consent_datetime'] == null ||
+              json['aa_consent_datetime'] == ""
           ? null
-          : DateTime.parse(json['aa_consent_datetime'] as String),
+          : DateTime.parse(json['aa_consent_datetime']),
       aaSessionStatus: json['aa_session_status'] as String?,
-      aaSessionDatetime: json['aa_session_datetime'] == null
+      aaSessionDatetime: json['aa_session_datetime'] == null ||
+              json['aa_session_datetime'] == ""
           ? null
           : DateTime.parse(json['aa_session_datetime'] as String),
       aaInsightsStatus: json['aa_insights_status'] as String?,
-      aaInsightsDatetime: json['aa_insights_datetime'] as String?,
+      aaInsightsDatetime: json['aa_insights_datetime'] == null ||
+              json['aa_insights_datetime'] == ""
+          ? null
+          : DateTime.parse(json['aa_insights_datetime'] as String),
     );
 
 Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{

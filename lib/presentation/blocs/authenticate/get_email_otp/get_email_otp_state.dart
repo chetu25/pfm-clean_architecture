@@ -31,3 +31,31 @@ class GetEmailOtpFailure extends GetEmailOtpState {
   @override
   List<Object?> get props => [errorType, errorMessage];
 }
+
+class LoginWithGoogleLoading extends GetEmailOtpState {
+  @override
+  List<Object> get props => [];
+}
+
+class LoginWithGoogleSuccess extends GetEmailOtpState {
+  final GoogleSignInAccount googleSignInAccount;
+  final String accessToken;
+
+  const LoginWithGoogleSuccess({
+    required this.googleSignInAccount,
+    required this.accessToken,
+  });
+
+  @override
+  List<Object> get props => [googleSignInAccount, accessToken];
+}
+
+class LoginWithGoogleFailure extends GetEmailOtpState {
+  final String error;
+
+  const LoginWithGoogleFailure({
+    required this.error,
+  });
+  @override
+  List<Object> get props => [];
+}

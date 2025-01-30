@@ -63,7 +63,7 @@ class Data {
   @JsonKey(name: "aa_insights_status")
   final String? aaInsightsStatus;
   @JsonKey(name: "aa_insights_datetime")
-  final String? aaInsightsDatetime;
+  final DateTime? aaInsightsDatetime;
 
   Data({
     this.email,
@@ -86,7 +86,7 @@ class Data {
     String? aaSessionStatus,
     DateTime? aaSessionDatetime,
     String? aaInsightsStatus,
-    String? aaInsightsDatetime,
+    DateTime? aaInsightsDatetime,
   }) =>
       Data(
         email: email ?? this.email,

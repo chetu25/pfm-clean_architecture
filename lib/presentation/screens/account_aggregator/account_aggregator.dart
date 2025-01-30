@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:go_router/go_router.dart';
 import 'package:pfm_ekyc/core/ColorPallete/colors.dart';
 import 'package:pfm_ekyc/core/Extensions/size_extension.dart';
@@ -9,7 +8,6 @@ import 'package:pfm_ekyc/core/custom/custom_appbar.dart';
 import 'package:pfm_ekyc/core/custom/custom_button.dart';
 import 'package:pfm_ekyc/core/custom/custom_rich_text.dart';
 import 'package:pfm_ekyc/gen/assets.gen.dart';
-import 'package:pfm_ekyc/presentation/blocs/account_aggregator/get_consent_url/get_consent_url_bloc.dart';
 import 'package:pfm_ekyc/presentation/blocs/authenticate/get_profile/get_profile_bloc.dart';
 import 'package:pfm_ekyc/presentation/screens/app_error_widget.dart';
 import 'package:pfm_ekyc/presentation/screens/account_aggregator/aggregator_slider.dart';
@@ -116,76 +114,18 @@ class _AccountAggregatorState extends State<AccountAggregator> {
         ),
         bottomSheet: SafeArea(
           child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: BlocConsumer<GetConsentUrlBloc, GetConsentUrlState>(
-                listener: (context, state) {
-                  if (state is GetConsentUrlSuccess) {
-                    if (state.setuConsentUrlModel.success!) {
-                      InAppWebView(
-                        initialUrlRequest: URLRequest(
-                          url: WebUri.uri(
-                            Uri.parse(
-                                state.setuConsentUrlModel.data?.redirectUrl ??
-                                    ''),
-                          ),
-                        ),
-                        onUpdateVisitedHistory:
-                            (controller, url, isReload) async {
-                          Map data = url?.queryParameters ?? {};
-                          String res = url.toString().toLowerCase();
-                          if (res.contains('accountnotconnected') ||
-                              res.contains("regect") ||
-                              res.contains("cancel") ||
-                              res.contains("errormsg") &&
-                                  data["success"] != "true") {
-                            if (isFirst) {
-                              isFirst = false;
-                              await Future.delayed(const Duration(seconds: 1));
-                              if (!context.mounted) return;
-                              Navigator.pop(context, "cancel");
-                            }
-                          } else if (data["success"] == "true") {
-                            if (isFirst) {
-                              isFirst = false;
-                              //GO TO PORTFOILIO SCREEN
-                            }
-                          }
-                        },
-                        initialSettings: InAppWebViewSettings(
-                            useShouldOverrideUrlLoading: true,
-                            builtInZoomControls: false,
-                            displayZoomControls: false,
-                            supportZoom: false,
-                            javaScriptCanOpenWindowsAutomatically: true,
-                            useHybridComposition: true,
-                            clearCache: true,
-                            clearSessionCache: true),
-                        onLoadStop: (controller, url) async {
-                          await controller.evaluateJavascript(source: """
-                              var meta = document.createElement('meta');
-                              meta.name = 'viewport';
-                              meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
-                              document.getElementsByTagName('head')[0].appendChild(meta);
-                              """);
-                        },
-                      );
-                    }
-                  }
-                },
-                builder: (context, state) {
-                  return CustomButton(
-                    ontap: () {
-                      FocusScope.of(context).unfocus();
-                      context.push(Routes.setuWeb);
-                    },
-                    child: Text(
-                      'Continue',
-                      style: baseTextStyle14500.copyWith(
-                          color: AppColors.background),
-                    ),
-                  );
-                },
-              )),
+            padding: const EdgeInsets.all(16.0),
+            child: CustomButton(
+              ontap: () {
+                FocusScope.of(context).unfocus();
+                context.push(Routes.setuWeb);
+              },
+              child: Text(
+                'Continue',
+                style: baseTextStyle14500.copyWith(color: AppColors.background),
+              ),
+            ),
+          ),
         ),
       ),
     );

@@ -16,6 +16,11 @@ final class Emailotp extends GetEmailOtpEvent {
   List<Object> get props => [param];
 }
 
+final class GoogleSign extends GetEmailOtpEvent {
+  @override
+  List<Object> get props => [];
+}
+
 final class StateChange extends GetEmailOtpEvent {
   @override
   List<Object> get props => [];

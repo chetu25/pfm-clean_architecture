@@ -227,18 +227,22 @@ class _LoginWithEmailScreenState extends State<LoginWithEmailScreen> {
                     ),
                   ),
                   verticalGap(context.height(1)),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Assets.pngs.googleLogo.image(
-                        height: context.height(1.9),
-                        width: context.width(8),
-                      ),
-                      Text(
-                        'Sign in with Google',
-                        style: baseTextStyle14400,
-                      ),
-                    ],
+                  InkWell(
+                    // onTap: () =>
+                    //     context.read<GetEmailOtpBloc>().add(GoogleSign()),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Assets.pngs.googleLogo.image(
+                          height: context.height(1.9),
+                          width: context.width(8),
+                        ),
+                        Text(
+                          'Sign in with Google',
+                          style: baseTextStyle14400,
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

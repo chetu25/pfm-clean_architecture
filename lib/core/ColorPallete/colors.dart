@@ -1,5 +1,3 @@
-// ignore_for_file: use_full_hex_values_for_flutter_colors
-
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -8,6 +6,7 @@ class AppColors {
   static const Color primaryWhite = Color(0xffFFFFFF);
   static const Color gradient1 = Color(0xff22B5ED);
   static const Color background = Color(0xffFFFFFF);
+  static const Color darkBackground = Color(0xff121212);
   static const Color indicatorClr = Color(0xffD33B52);
   static const Color borderClr = Color(0xff707070);
   static const Color btnPrimary = Color(0xff081F27);
@@ -27,26 +26,56 @@ class AppColors {
   static const Color tcClr = Color(0xff0020FF);
 }
 
-ThemeData lightTheme() => ThemeData(
-    scaffoldBackgroundColor: Colors.white,
-    colorScheme: const ColorScheme.light(primary: AppColors.background),
-    // colorSchemeSeed: redColor,
-    dividerColor: AppColors.dividerClr,
-    dividerTheme: const DividerThemeData(thickness: 0.3),
-    appBarTheme: const AppBarTheme(
-      color: AppColors.background,
-      elevation: 0,
-    ),
-    textSelectionTheme: TextSelectionThemeData(
-        selectionColor: Colors.blue.shade200,
-        selectionHandleColor: Colors.blue),
-    progressIndicatorTheme: const ProgressIndicatorThemeData(
-        linearMinHeight: 1, color: AppColors.btnPrimary),
-    scrollbarTheme: const ScrollbarThemeData(
-      // trackVisibility: WidgetStatePropertyAll(false),
-      // thumbVisibility: WidgetStatePropertyAll(false),
-      // thickness: WidgetStatePropertyAll(5),
-      interactive: true,
-      // thumbColor: MaterialStatePropertyAll(color37393A),
-      radius: Radius.circular(5),
-    ));
+class AppTheme {
+  static ThemeData lightTheme(context) => ThemeData.light(
+        useMaterial3: false,
+      ).copyWith(
+        brightness: Brightness.light,
+        scaffoldBackgroundColor: AppColors.background,
+        colorScheme: const ColorScheme.light(primary: AppColors.btnPrimary),
+        dividerColor: AppColors.dividerClr,
+        dividerTheme: const DividerThemeData(thickness: 0.3),
+        appBarTheme: const AppBarTheme(
+          color: AppColors.background,
+          elevation: 0,
+        ),
+        textSelectionTheme: TextSelectionThemeData(
+          selectionColor: Colors.blue.shade200,
+          selectionHandleColor: Colors.blue,
+        ),
+        progressIndicatorTheme: const ProgressIndicatorThemeData(
+          linearMinHeight: 1,
+          color: AppColors.btnPrimary,
+        ),
+        scrollbarTheme: const ScrollbarThemeData(
+          interactive: true,
+          radius: Radius.circular(5),
+        ),
+      );
+
+  static ThemeData darkTheme(context) => ThemeData.dark(
+        useMaterial3: false,
+      ).copyWith(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: AppColors.darkBackground,
+        colorScheme: const ColorScheme.dark(primary: AppColors.btnPrimary),
+        dividerColor: Colors.grey.shade800,
+        dividerTheme: const DividerThemeData(thickness: 0.3),
+        appBarTheme: const AppBarTheme(
+          color: AppColors.darkBackground,
+          elevation: 0,
+        ),
+        textSelectionTheme: TextSelectionThemeData(
+          selectionColor: Colors.blue.shade700,
+          selectionHandleColor: Colors.blue,
+        ),
+        progressIndicatorTheme: const ProgressIndicatorThemeData(
+          linearMinHeight: 1,
+          color: AppColors.btnPrimary,
+        ),
+        scrollbarTheme: const ScrollbarThemeData(
+          interactive: true,
+          radius: Radius.circular(5),
+        ),
+      );
+}
