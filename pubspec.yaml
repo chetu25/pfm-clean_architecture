@@ -39,12 +39,13 @@ dependencies:
   carousel_slider: ^5.0.0
   smooth_page_indicator: ^1.2.0+3
   signature: ^5.5.0
-  flutter_inappwebview: ^6.1.5
   top_snackbar_flutter: ^3.1.0
   timeline_tile: ^2.0.0
   google_fonts: ^6.2.1
   otp_autofill: ^4.1.0
   jwt_decoder: ^2.0.1
+  flutter_inappwebview: ^6.1.5
+  confetti: ^0.8.0
 
 
 dev_dependencies:

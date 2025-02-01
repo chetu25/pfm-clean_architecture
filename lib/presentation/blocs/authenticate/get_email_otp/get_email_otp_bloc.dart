@@ -10,8 +10,6 @@ import 'package:pfm_ekyc/domain/usecases/authentication/send_email_otp.dart';
 part 'get_email_otp_event.dart';
 part 'get_email_otp_state.dart';
 
-const String _h = 'login_with_google_cubit';
-
 @injectable
 class GetEmailOtpBloc extends Bloc<GetEmailOtpEvent, GetEmailOtpState> {
   final SendEmailOtp sendEmailOtp;

@@ -15,5 +15,10 @@ class ApiConstants {
   static const String activeplanUrl = "active-subscription";
   static const String updateEmailUrl = "update-email";
   static const String getConsentUrl = "get-setu-consent-url";
+  static const String getConsentStatusUrl = "get-setu-consent-status";
+  static const String getSessiontUrl = "get-setu-session-status";
   static const String profileUrl = "client-details";
+  static const String getBankAccountsUrl = "get-setu-bank-accounts";
+  static const String insightStatusUrl = "get-setu-insights-status";
+  static const String insightDataUrl = "get-setu-insights";
 }

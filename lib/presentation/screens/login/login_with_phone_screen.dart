@@ -15,7 +15,6 @@ import 'package:pfm_ekyc/gen/assets.gen.dart';
 import 'package:pfm_ekyc/presentation/blocs/authenticate/get_phone_otp/getphoneotp_bloc.dart';
 import 'package:pfm_ekyc/presentation/blocs/authenticate/get_stage/get_stage_bloc.dart';
 import 'package:pfm_ekyc/presentation/blocs/authenticate/verify_phone_otp/verify_phone_otp_bloc.dart';
-import 'package:pfm_ekyc/presentation/blocs/theme/theme_bloc.dart';
 import 'package:pfm_ekyc/presentation/screens/app_error_widget.dart';
 import 'package:pfm_ekyc/presentation/screens/login/check_stage.dart';
 
@@ -109,30 +108,6 @@ class _LoginWithPhoneScreenState extends State<LoginWithPhoneScreen> {
                     ),
                   ),
                   verticalGap(context.height(3.4)),
-                  BlocBuilder<ThemeBloc, ThemeState>(
-                    builder: (context, state) {
-                      final isDarkTheme = state is DarkThemeState;
-                      return SizedBox(
-                        width: MediaQuery.sizeOf(context).width * 0.35,
-                        child: SwitchListTile(
-                          value: isDarkTheme,
-                          onChanged: (value) {
-                            if (value) {
-                              context
-                                  .read<ThemeBloc>()
-                                  .add(ChangeToDarkTheme());
-                            } else {
-                              context
-                                  .read<ThemeBloc>()
-                                  .add(ChangeToLightTheme());
-                            }
-                          },
-                          secondary: Icon(
-                              isDarkTheme ? Icons.dark_mode : Icons.light_mode),
-                        ),
-                      );
-                    },
-                  ),
                   Text(
                     'Enter Mobile Number',
                     style: baseTextStyle14500,

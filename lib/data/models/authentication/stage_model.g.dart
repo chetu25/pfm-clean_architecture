@@ -8,7 +8,7 @@ part of 'stage_model.dart';
 
 StageModel _$StageModelFromJson(Map<String, dynamic> json) => StageModel(
       success: json['success'] as bool?,
-      message: json['message'] as String?,
+      message: (json['message'] ?? '') as String?,
       data: json['data'] == null
           ? null
           : Data.fromJson(json['data'] as Map<String, dynamic>),
@@ -26,19 +26,19 @@ Data _$DataFromJson(Map<String, dynamic> json) => Data(
       panNumber: json['pan_number'] as bool?,
       dob: json['dob'] as bool?,
       aaConsentStatus: json['aa_consent_status'] as String?,
-      aaConsentDatetime: json['aa_consent_datetime'] == null ||
-              json['aa_consent_datetime'] == ""
-          ? null
-          : DateTime.parse(json['aa_consent_datetime']),
+      aaConsentDatetime: json['aa_consent_datetime'] == "" ||
+              json['aa_consent_datetime'] == null
+          ? DateTime.now()
+          : DateTime.parse(json['aa_consent_datetime'] as String),
       aaSessionStatus: json['aa_session_status'] as String?,
       aaSessionDatetime: json['aa_session_datetime'] == null ||
               json['aa_session_datetime'] == ""
-          ? null
+          ? DateTime.now()
           : DateTime.parse(json['aa_session_datetime'] as String),
       aaInsightsStatus: json['aa_insights_status'] as String?,
-      aaInsightsDatetime: json['aa_insights_datetime'] == null ||
-              json['aa_insights_datetime'] == ""
-          ? null
+      aaInsightsDatetime: json['aa_insights_datetime'] == "" ||
+              json['aa_insights_datetime'] == null
+          ? DateTime.now()
           : DateTime.parse(json['aa_insights_datetime'] as String),
     );
 
@@ -51,5 +51,5 @@ Map<String, dynamic> _$DataToJson(Data instance) => <String, dynamic>{
       'aa_session_status': instance.aaSessionStatus,
       'aa_session_datetime': instance.aaSessionDatetime?.toIso8601String(),
       'aa_insights_status': instance.aaInsightsStatus,
-      'aa_insights_datetime': instance.aaInsightsDatetime,
+      'aa_insights_datetime': instance.aaInsightsDatetime?.toIso8601String(),
     };

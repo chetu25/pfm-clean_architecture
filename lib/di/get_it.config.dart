@@ -31,7 +31,15 @@ import '../domain/repositories/account_aggregator_repositories.dart' as _i526;
 import '../domain/repositories/account_repositories.dart' as _i239;
 import '../domain/repositories/theme_repositories.dart' as _i490;
 import '../domain/repositories/tokens_repositories.dart' as _i629;
+import '../domain/usecases/account_aggregator/fetch_consent_status.dart'
+    as _i625;
+import '../domain/usecases/account_aggregator/fetch_seeion.dart' as _i399;
+import '../domain/usecases/account_aggregator/get_bank_account_details.dart'
+    as _i802;
 import '../domain/usecases/account_aggregator/get_consent_link.dart' as _i1049;
+import '../domain/usecases/account_aggregator/get_insight_details.dart'
+    as _i1068;
+import '../domain/usecases/account_aggregator/get_insight_status.dart' as _i2;
 import '../domain/usecases/authentication/check_stages.dart' as _i674;
 import '../domain/usecases/authentication/get_phone_otp.dart' as _i511;
 import '../domain/usecases/authentication/get_profile_data.dart' as _i661;
@@ -40,8 +48,18 @@ import '../domain/usecases/authentication/submit_pan.dart' as _i839;
 import '../domain/usecases/authentication/validate_pan_number.dart' as _i413;
 import '../domain/usecases/authentication/validate_phone_otp.dart' as _i694;
 import '../domain/usecases/authentication/vallidate_email_otp.dart' as _i724;
+import '../presentation/blocs/account_aggregator/fetch_bank_accounts/fetch_bank_account_bloc.dart'
+    as _i991;
+import '../presentation/blocs/account_aggregator/fetch_consent_status/fetch_consent_status_bloc.dart'
+    as _i182;
+import '../presentation/blocs/account_aggregator/fetch_insight_staus/fetch_insight_status_bloc.dart'
+    as _i77;
+import '../presentation/blocs/account_aggregator/fetch_seesion_status/get_session_status_bloc.dart'
+    as _i496;
 import '../presentation/blocs/account_aggregator/get_consent_url/get_consent_url_bloc.dart'
     as _i894;
+import '../presentation/blocs/account_aggregator/Insight_data/insight_data_bloc.dart'
+    as _i614;
 import '../presentation/blocs/authenticate/get_email_otp/get_email_otp_bloc.dart'
     as _i112;
 import '../presentation/blocs/authenticate/get_phone_otp/getphoneotp_bloc.dart'
@@ -109,6 +127,16 @@ _i174.GetIt $initGetIt(
           gh<_i461.AccountAggregatorRemoteDataSource>()));
   gh.factory<_i1049.GetConsentLink>(
       () => _i1049.GetConsentLink(gh<_i526.AccountAggregatorRepositories>()));
+  gh.factory<_i625.FetchConsentStatus>(() =>
+      _i625.FetchConsentStatus(gh<_i526.AccountAggregatorRepositories>()));
+  gh.factory<_i399.FetchSeeion>(
+      () => _i399.FetchSeeion(gh<_i526.AccountAggregatorRepositories>()));
+  gh.factory<_i2.GetInsightStatus>(
+      () => _i2.GetInsightStatus(gh<_i526.AccountAggregatorRepositories>()));
+  gh.factory<_i496.GetSessionStatusBloc>(
+      () => _i496.GetSessionStatusBloc(gh<_i399.FetchSeeion>()));
+  gh.factory<_i802.GetBankAccountDetails>(() =>
+      _i802.GetBankAccountDetails(gh<_i526.AccountAggregatorRepositories>()));
   gh.factory<_i511.GetPhoneOtp>(
       () => _i511.GetPhoneOtp(gh<_i239.AccountRepositories>()));
   gh.factory<_i839.SubmitPan>(
@@ -125,10 +153,18 @@ _i174.GetIt $initGetIt(
       () => _i330.SendEmailOtp(gh<_i239.AccountRepositories>()));
   gh.factory<_i661.GetProfileData>(
       () => _i661.GetProfileData(gh<_i239.AccountRepositories>()));
+  gh.factory<_i182.FetchConsentStatusBloc>(
+      () => _i182.FetchConsentStatusBloc(gh<_i625.FetchConsentStatus>()));
+  gh.factory<_i991.FetchBankAccountBloc>(
+      () => _i991.FetchBankAccountBloc(gh<_i802.GetBankAccountDetails>()));
   gh.factory<_i515.GetProfileBloc>(
       () => _i515.GetProfileBloc(gh<_i661.GetProfileData>()));
   gh.factory<_i389.VerifyEmailOtpBloc>(
       () => _i389.VerifyEmailOtpBloc(gh<_i724.VallidateEmailOtp>()));
+  gh.factory<_i77.FetchInsightStatusBloc>(
+      () => _i77.FetchInsightStatusBloc(gh<_i2.GetInsightStatus>()));
+  gh.factory<_i1068.GetInsightDetails>(() =>
+      _i1068.GetInsightDetails(gh<_i526.AccountAggregatorRepositories>()));
   gh.factory<_i610.GetStageBloc>(
       () => _i610.GetStageBloc(gh<_i674.CheckStages>()));
   gh.factory<_i464.ValidatePanBloc>(
@@ -145,6 +181,8 @@ _i174.GetIt $initGetIt(
       () => _i112.GetEmailOtpBloc(gh<_i330.SendEmailOtp>()));
   gh.factory<_i937.UpdatePanBloc>(
       () => _i937.UpdatePanBloc(gh<_i839.SubmitPan>()));
+  gh.factory<_i614.InsightDataBloc>(
+      () => _i614.InsightDataBloc(gh<_i1068.GetInsightDetails>()));
   return getIt;
 }
 

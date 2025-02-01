@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:dartz/dartz.dart';
@@ -25,7 +26,7 @@ class ApiCallWithError {
             error: e.errorMessage, statusCode: e.errorCode),
       );
     } on Exception catch (e) {
-      print('--------------------- ${e.toString()}');
+      log('Exception:- $e');
       return const Left(
         AppError(AppErrorType.api),
       );
