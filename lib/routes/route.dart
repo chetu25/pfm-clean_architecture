@@ -7,6 +7,7 @@ class Routes {
   static const String accountAggregator = '/accountaggregator';
   static const String setuWeb = '/setuWeb';
   static const String congratulationsScreen = '/congratulationsscreen';
+  static const String dashboardScreen = '/dashboardscreen';
 
   static const String logout = '/logout';
 }

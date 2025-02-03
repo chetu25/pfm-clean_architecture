@@ -95,7 +95,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               padding: EdgeInsets.symmetric(
                   horizontal: context.width(5), vertical: context.height(2)),
               child: CustomButton(
-                ontap: () => context.push(Routes.phoneLogin),
+                ontap: () {
+                  context.push(Routes.phoneLogin);
+                },
                 child: Text(
                   'Lets Go',
                   style: baseTextStyle14400.copyWith(

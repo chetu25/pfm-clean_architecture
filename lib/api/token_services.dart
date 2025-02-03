@@ -1,3 +1,4 @@
+import 'package:go_router/go_router.dart';
 import 'package:injectable/injectable.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:pfm_ekyc/core/common/app_keys.dart';
@@ -17,17 +18,13 @@ class TokenService {
     final String? accessToken = await _tokenRepository.getToken();
     if (accessToken == null) {
       navigatorKey.currentState!.pushNamedAndRemoveUntil(
-        Routes.inital,
+        Routes.onboarding,
         (route) => false,
       );
       throw Exception();
     } else if (JwtDecoder.isExpired(accessToken)) {
       logFatal(_h, null, 'Access token is expired');
-
-      navigatorKey.currentState!.pushNamedAndRemoveUntil(
-        Routes.inital,
-        (route) => false,
-      );
+      navigatorKey.currentContext!.pushReplacementNamed(Routes.onboarding);
       throw Exception();
     } else {
       logDebugFine(_h, accessToken);

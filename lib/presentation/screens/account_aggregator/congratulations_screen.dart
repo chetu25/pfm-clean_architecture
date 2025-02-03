@@ -100,7 +100,7 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
           padding: const EdgeInsets.all(16.0),
           child: CustomButton(
             ontap: () {
-              context.push(Routes.onboarding);
+              context.push(Routes.dashboardScreen);
             },
             child: Text(
               'Continue',

@@ -22,9 +22,9 @@ class CheckStage {
             .toLowerCase()
             .contains('COMPLETED') &&
         stageModel.data!.aaConsentStatus!.toLowerCase().contains('ACTIVE')) {
-      //GO TO CONGRATULATIONS Screnn
+      context.push(Routes.congratulationsScreen);
     } else {
-      context.push(Routes.onboarding);
+      context.push(Routes.dashboardScreen);
     }
   }
 }

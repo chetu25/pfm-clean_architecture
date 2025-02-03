@@ -79,6 +79,10 @@ class SetuWebViewScreen extends StatelessWidget {
                       context
                           .read<GetSessionStatusBloc>()
                           .add(CheckSessionStatus());
+                    } else if (state.consentStatusModel.data!.setuStatus!
+                            .toLowerCase() ==
+                        'failed') {
+                      context.push(Routes.accountAggregator);
                     }
                   } else {
                     Fluttertoast.showToast(
